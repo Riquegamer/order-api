@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/Adapters/" />
+  <Folder Name="/Adapters/Primary/">
+    <Project Path="order-api/order-api.csproj">
+      <BuildDependency Project="application/application.csproj" />
+      <BuildDependency Project="Infraestructure/Infraestructure.csproj" />
+    </Project>
+  </Folder>
+  <Folder Name="/Adapters/Secondary/">
+    <Project Path="Infraestructure/Infraestructure.csproj">
+      <BuildDependency Project="application/application.csproj" />
+      <BuildDependency Project="Domain/domain.csproj" />
+    </Project>
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="application/application.csproj">
+      <BuildDependency Project="Domain/domain.csproj" />
+    </Project>
+    <Project Path="Domain/domain.csproj" />
+  </Folder>
+  <Folder Name="/Itens de Solução/">
+    <File Path="docker-compose.yaml" />
+  </Folder>
+</Solution>

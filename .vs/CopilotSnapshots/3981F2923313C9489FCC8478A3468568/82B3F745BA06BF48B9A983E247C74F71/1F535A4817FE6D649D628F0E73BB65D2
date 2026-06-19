@@ -1,0 +1,19 @@
+﻿using domain.Ports;
+
+namespace application.UseCases
+{
+    public class CreateNegocioUseCase
+    {
+        private readonly INegocioRepository _negocioRepository;
+
+        public CreateNegocioUseCase(INegocioRepository negocioRepository)
+        {
+            _negocioRepository = negocioRepository;
+        }
+
+        public async Task<NegocioEntity> Execute() // TODO: Criar DTO de entrada e saída para o caso de uso
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

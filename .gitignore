@@ -55,3 +55,7 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Custom - Ignorar configurações locais com senhas
+appsettings.json
+appsettings.Development.json
