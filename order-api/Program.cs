@@ -39,6 +39,8 @@ builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateNegocioRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<AtualizarNegocioRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<AtualizarClienteRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CriarClienteRequestValidator>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();
@@ -55,6 +57,9 @@ builder.Services.AddScoped<IDeletarNegocioUseCase,DeletarNegocioUseCase>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ICriarClienteUseCase, CriarClienteUseCase>();
 builder.Services.AddScoped<IListarClientesUseCase, ListarClientesUseCase>();
+builder.Services.AddScoped<IEncontrarClientePorIDUseCase, EncontrarClientePorIDUseCase>();
+builder.Services.AddScoped<IAtualizarClienteUseCase, AtualizarClienteUseCase>();
+builder.Services.AddScoped<IDeletarClienteUseCase, DeletarClienteUseCase>();
 
 builder.Services.AddInfrastructureModule(builder.Configuration);
 

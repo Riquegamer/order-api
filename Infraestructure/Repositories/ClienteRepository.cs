@@ -38,16 +38,17 @@ namespace Infraestructure.Repositories
 
         public async Task<ClienteEntity> UpdateAsync(ClienteEntity cliente)
         {
-            try
+            var clienteExistente = await _context.cliente.FindAsync(cliente.Id);
+
+            if (clienteExistente == null) 
             {
-                var atualizado = _context.cliente.Update(cliente);
-                await _context.SaveChangesAsync();
-                return atualizado.Entity;
+                throw new KeyNotFoundException("Cliente não encontrado.");
             }
-            catch
-            {
-                throw new Exception("Cliente não encontrado para atualização.");
-            }
+
+            _context.Entry(clienteExistente).CurrentValues.SetValues(cliente);
+            await _context.SaveChangesAsync();
+
+            return clienteExistente;
         }
 
             #endregion

@@ -1,40 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Henrique\\source\\repos\\order-api\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|c:\\users\\henrique\\source\\repos\\order-api\\infraestructure\\contexts\\interceptors\\rlsinterceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\contexts\\interceptors\\rlsinterceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|c:\\users\\henrique\\source\\repos\\order-api\\order-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|solutionrelative:order-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|c:\\users\\henrique\\source\\repos\\order-api\\infraestructure\\dependencyinjetctions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\dependencyinjetctions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|c:\\users\\henrique\\source\\repos\\order-api\\order-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|solutionrelative:order-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|c:\\users\\henrique\\source\\repos\\order-api\\infraestructure\\contexts\\postgredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABA3F542-59E7-CDD3-52A7-C71F658301AE}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\contexts\\postgredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|c:\\users\\henrique\\source\\repos\\order-api\\order-api\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|solutionrelative:order-api\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|c:\\users\\henrique\\source\\repos\\order-api\\order-api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|solutionrelative:order-api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|c:\\users\\henrique\\source\\repos\\order-api\\order-api\\controllers\\negociocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E60CB8C4-4CC0-9875-884E-7FFE0497E0A3}|order-api\\order-api.csproj|solutionrelative:order-api\\controllers\\negociocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -42,114 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\appsettings.json",
-              "RelativeDocumentMoniker": "order-api\\appsettings.json",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\appsettings.json",
-              "RelativeToolTip": "order-api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-19T19:45:35.189Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\DependencyInjetctions\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\DependencyInjetctions\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\DependencyInjetctions\\DependencyInjection.cs",
-              "RelativeToolTip": "Infraestructure\\DependencyInjetctions\\DependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:34:39.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Program.cs",
-              "RelativeDocumentMoniker": "order-api\\Program.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Program.cs",
-              "RelativeToolTip": "order-api\\Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:34:20.062Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PostgreDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\Contexts\\PostgreDbContext.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Contexts\\PostgreDbContext.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\Contexts\\PostgreDbContext.cs",
-              "RelativeToolTip": "Infraestructure\\Contexts\\PostgreDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:31:45.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NegocioController.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\NegocioController.cs",
-              "RelativeDocumentMoniker": "order-api\\Controllers\\NegocioController.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\NegocioController.cs",
-              "RelativeToolTip": "order-api\\Controllers\\NegocioController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T16:51:56.385Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "order-api\\Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "order-api\\Controllers\\ClienteController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAowCoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T16:51:54.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "order-api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\order-api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "order-api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T16:51:52.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RlsInterceptor.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\Contexts\\Interceptors\\RlsInterceptor.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Contexts\\Interceptors\\RlsInterceptor.cs",
-              "ToolTip": "C:\\Users\\Henrique\\source\\repos\\order-api\\Infraestructure\\Contexts\\Interceptors\\RlsInterceptor.cs",
-              "RelativeToolTip": "Infraestructure\\Contexts\\Interceptors\\RlsInterceptor.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAkwBwAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T16:49:01.492Z",
-              "EditorCaption": ""
             }
           ]
         }
