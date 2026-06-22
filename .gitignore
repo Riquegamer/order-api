@@ -59,3 +59,12 @@ nunit-*.xml
 # Custom - Ignorar configurações locais com senhas
 appsettings.json
 appsettings.Development.json
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/

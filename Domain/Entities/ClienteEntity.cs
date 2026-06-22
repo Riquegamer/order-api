@@ -1,4 +1,5 @@
-﻿using domain.ValueObjects;
+﻿using domain.Exceptions;
+using domain.ValueObjects;
 
 namespace domain.Entities
 {
@@ -27,10 +28,10 @@ namespace domain.Entities
 
         public ClienteEntity(string nome, string documento, string? nomeFantasia, string telefone, string email, Guid negocioId)
         {
-            if(string.IsNullOrWhiteSpace(nome)) throw new ArgumentException("Nome do cliente é obrigatório.", nameof(nome));
-            if(string.IsNullOrWhiteSpace(documento)) throw new ArgumentException("Documento do cliente é obrigatório.", nameof(documento));
-            if(string.IsNullOrWhiteSpace(telefone)) throw new ArgumentException("Telefone do cliente é obrigatório.", nameof(telefone));
-            if(string.IsNullOrWhiteSpace(email)) throw new ArgumentException("E-mail do cliente é obrigatório.", nameof(email));
+            if(string.IsNullOrWhiteSpace(nome)) throw new DomainException("Nome do cliente é obrigatório.");
+            if(string.IsNullOrWhiteSpace(documento)) throw new DomainException("Documento do cliente é obrigatório.");
+            if(string.IsNullOrWhiteSpace(telefone)) throw new DomainException("Telefone do cliente é obrigatório.");
+            if(string.IsNullOrWhiteSpace(email)) throw new DomainException("E-mail do cliente é obrigatório.");
 
             Id = Guid.NewGuid();
             Nome = nome;
@@ -48,6 +49,26 @@ namespace domain.Entities
         #endregion
 
         #region Metodos
+
+        public void Atualizar(string nome, string documento, string? nomeFantasia, string telefone, string email)
+        {
+            if (string.IsNullOrWhiteSpace(nome)) throw new DomainException("Nome do cliente é obrigatório.");
+            if (string.IsNullOrWhiteSpace(documento)) throw new DomainException("Documento do cliente é obrigatório.");
+            if (string.IsNullOrWhiteSpace(telefone)) throw new DomainException("Telefone do cliente é obrigatório.");
+            if (string.IsNullOrWhiteSpace(email)) throw new DomainException("E-mail do cliente é obrigatório.");
+            Nome = nome;
+            Documento = documento;
+            NomeFantasia = nomeFantasia;
+            Telefone = telefone;
+            Email = email;
+            AtualizadoEm = DateTime.UtcNow;
+        }
+
+        public void Deletar()
+        {
+            DeletadoEm = DateTime.UtcNow;
+        }
+
         #endregion
     }
 }
