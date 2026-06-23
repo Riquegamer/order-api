@@ -1,10 +1,11 @@
 name: CI/CD Pipeline - NF-e API
 
-# Gatilhos: A esteira roda sempre que houver um push na branch main
+# Gatilhos: Roda em pushes para main E develop
 on:
   push:
     branches:
       - main
+      - develop
 
 env:
   DOCKER_IMAGE: henriquecosta500/order-api
@@ -26,7 +27,7 @@ jobs:
       - name: Restaurar dependências
         run: dotnet restore
 
-      - name: Build da aplicação (Arquitetura Hexagonal)
+      - name: Build da aplicação
         run: dotnet build --no-restore --configuration Release
 
       - name: Rodar Testes Unitários
@@ -44,7 +45,14 @@ jobs:
 
       - name: Gerar Tag Única da Imagem
         id: generate_tag
-        run: echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        # Adiciona o prefixo da branch (dev- ou prod-) junto com o hash do commit
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "TAG=prod-${SHORT_SHA}" >> $GITHUB_OUTPUT
+          else
+            echo "TAG=dev-${SHORT_SHA}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Login no Docker Hub
         uses: docker/login-action@v3
@@ -57,27 +65,38 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ${{ env.DOCKER_IMAGE }}:${{ steps.generate_tag.outputs.TAG }}
-            ${{ env.DOCKER_IMAGE }}:latest
+          tags: ${{ env.DOCKER_IMAGE }}:${{ steps.generate_tag.outputs.TAG }}
 
   update-gitops-repo:
     name: Atualizar Repositório GitOps
     needs: docker-build-push
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do Repositório de Infraestrutura
+      - name: Determinar Ambiente de Destino
+        id: target_env
+        # Define a pasta alvo no repositório GitOps dependendo da branch atual
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "ENV_FOLDER=k8s/production" >> $GITHUB_ENV
+            echo "ENV_NAME=Produção" >> $GITHUB_ENV
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "ENV_FOLDER=k8s/validation" >> $GITHUB_ENV
+            echo "ENV_NAME=Validação" >> $GITHUB_ENV
+          fi
+
+      - name: Checkout do Repositório de Infraestrutura (GitOps)
         uses: actions/checkout@v4
         with:
-          repository: Riquegamer/order-infra-gitops
+          repository: Riquegamer/order-infra-gitops.git
           token: ${{ secrets.INFRA_REPO_PAT }}
           ref: main
 
       - name: Atualizar a Tag da Imagem no Manifesto YAML
         env:
           NEW_TAG: ${{ needs.docker-build-push.outputs.image_tag }}
+        # Vai alterar APENAS o arquivo da pasta correspondente à branch (produção ou validação)
         run: |
-          sed -i "s|image: ${{ env.DOCKER_IMAGE }}:.*|image: ${{ env.DOCKER_IMAGE }}:${NEW_TAG}|g" k8s/validation/api-deployment.yaml
+          sed -i "s|image: ${{ env.DOCKER_IMAGE }}:.*|image: ${{ env.DOCKER_IMAGE }}:${NEW_TAG}|g" ${{ env.ENV_FOLDER }}/api-deployment.yaml
 
       - name: Commit e Push das alterações de Infra
         env:
@@ -85,6 +104,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add k8s/validation/api-deployment.yaml
-          git commit -m "chore(deploy): atualiza API para a tag ${NEW_TAG}"
+          git add ${{ env.ENV_FOLDER }}/api-deployment.yaml
+          git commit -m "chore(deploy): atualiza API em ${{ env.ENV_NAME }} para tag ${NEW_TAG}"
           git push origin main
