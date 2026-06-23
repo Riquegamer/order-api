@@ -74,14 +74,15 @@ jobs:
     steps:
       - name: Determinar Ambiente de Destino
         id: target_env
-        # Define a pasta alvo no repositório GitOps dependendo da branch atual
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
             echo "ENV_FOLDER=k8s/production" >> $GITHUB_ENV
             echo "ENV_NAME=Produção" >> $GITHUB_ENV
+            echo "PLACEHOLDER=prod-placeholder" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             echo "ENV_FOLDER=k8s/validation" >> $GITHUB_ENV
             echo "ENV_NAME=Validação" >> $GITHUB_ENV
+            echo "PLACEHOLDER=dev-placeholder" >> $GITHUB_ENV
           fi
 
       - name: Checkout do Repositório de Infraestrutura (GitOps)
@@ -94,9 +95,16 @@ jobs:
       - name: Atualizar a Tag da Imagem no Manifesto YAML
         env:
           NEW_TAG: ${{ needs.docker-build-push.outputs.image_tag }}
-        # Vai alterar APENAS o arquivo da pasta correspondente à branch (produção ou validação)
         run: |
-          sed -i "s|image: ${{ env.DOCKER_IMAGE }}:.*|image: ${{ env.DOCKER_IMAGE }}:${NEW_TAG}|g" ${{ env.ENV_FOLDER }}/api-deployment.yaml
+          MANIFEST="${{ env.ENV_FOLDER }}/api-deployment.yaml"
+          
+          if grep -q "image: ${{ env.PLACEHOLDER }}" $MANIFEST; then
+            echo "Primeira execução detectada. Substituindo o placeholder..."
+            sed -i "s|image: ${{ env.PLACEHOLDER }}|image: ${{ env.DOCKER_IMAGE }}:${NEW_TAG}|g" $MANIFEST
+          else
+            echo "Execuções subsequentes. Atualizando a tag antiga..."
+            sed -i "s|image: ${{ env.DOCKER_IMAGE }}:.*|image: ${{ env.DOCKER_IMAGE }}:${NEW_TAG}|g" $MANIFEST
+          fi
 
       - name: Commit e Push das alterações de Infra
         env:
