@@ -10,23 +10,17 @@ namespace Infraestructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(@"
-            GRANT USAGE ON SHCEMA ""order""TO api_order_user;
-            GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA ""order"" TO api_order_user;
-            GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA order TO api_order_user;
-            ");
+            migrationBuilder.Sql("GRANT USAGE ON SCHEMA \"order\" TO api_order_user;");
+            migrationBuilder.Sql("GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA \"order\" TO api_order_user;");
+            migrationBuilder.Sql("GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA \"order\" TO api_order_user;");
+
+            migrationBuilder.Sql("ALTER TABLE \"order\".cliente DISABLE ROW LEVEL SECURITY;");
+            migrationBuilder.Sql("ALTER TABLE \"order\".negocio DISABLE ROW LEVEL SECURITY;");
+            migrationBuilder.Sql("ALTER TABLE \"order\".cliente ENABLE ROW LEVEL SECURITY;");
+
 
             migrationBuilder.Sql(@"
-                ALTER TABLE order.cliente DISABLE ROW LEVEL SECURITY;
-                ALTER TABLE order.negocio DISABLE ROW LEVEL SECURITY;
-                ");
-
-            migrationBuilder.Sql(@"
-                ALTER TABLE order.cliente ENABLE ROW LEVEL SECURITY;
-                ");
-
-            migrationBuilder.Sql(@"
-                CREATE POLICY cliente_isolation_policy ON public.cliente
+                CREATE POLICY cliente_isolation_policy ON ""order"".cliente
                 FOR ALL
                 TO api_order_user
                 USING (
