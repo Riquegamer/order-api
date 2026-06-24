@@ -11,8 +11,8 @@ namespace Infraestructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-            GRANT USAGE ON SHCEMA order TO api_order_user;
-            GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA order TO api_order_user;
+            GRANT USAGE ON SHCEMA ""order""TO api_order_user;
+            GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA ""order"" TO api_order_user;
             GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA order TO api_order_user;
             ");
 
