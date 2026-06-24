@@ -26,8 +26,21 @@ RUN dotnet restore "order-api/order-api.csproj"
 # Copia o restante do código fonte de todas as camadas\
 COPY . .
 
-# Compila o projeto sem restaurar novamente
+# Instala a ferramenta do EF Core globalmente
+RUN dotnet tool install --global dotnet-ef --version 10.0.*
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Entra na pasta do projeto principal (Driving Adapter)
 WORKDIR "/src/order-api"
+
+# ==========================================
+# Estágio 2.5: GERAR BUNDLE DE MIGRAÇÃO
+# ==========================================
+RUN dotnet ef migrations bundle \
+--project ../Infraestructure/Infraestructure.csproj \
+--configuration ${BUILD_CONFIGURATION} \
+-o /app/build/efbundle
+
 RUN dotnet build "order-api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # ==========================================
@@ -36,6 +49,8 @@ RUN dotnet build "order-api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "order-api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+RUN cp /app/build/efbundle /app/publish/
 
 # ==========================================
 # Estágio 4: Imagem Final de Produção (Enxuta)
