@@ -5,6 +5,6 @@ namespace application.Interfaces
 {
     public interface ICriarNegocioUseCase
     {
-        Task<CreateNegocioResponse> ExecuteAsync(CreateNegocioRequest request);
+        Task<NegocioResponse> ExecuteAsync(CreateNegocioRequest request);
     }
 }

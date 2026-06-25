@@ -20,7 +20,7 @@ namespace application.DTOs.Validations
 
             RuleFor(x => x.Telefone)
                 .NotEmpty().WithMessage("O telefone do cliente é obrigatório.")
-                .Length(12, 13).WithMessage("O telefone deve ter entre 12 e 13 caracteres.");
+                .Length(10, 11).WithMessage("O telefone deve ter entre 10 e 11 caracteres.");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("O e-mail do cliente é obrigatório.")

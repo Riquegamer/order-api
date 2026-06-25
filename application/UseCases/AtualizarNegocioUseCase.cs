@@ -29,6 +29,13 @@ namespace application.UseCases
             var negocio = await _negocioRepository.GetByIdAsync(id);
             if (negocio == null) return null;
 
+            var EmailCheck = await _negocioRepository.GetByEmailAsync(request.Email);
+
+            if (EmailCheck != null && EmailCheck.Email.Valor != negocio.Email.Valor)
+            {
+                throw new Exception($"Email {request.Email} já esta sendo usado por outro negócio");
+            }
+
             negocio.Atualizar(request.Nome, request.Email, request.Documento, request.Telefone);
 
             await _negocioRepository.UpdateAsync(negocio);
@@ -36,9 +43,9 @@ namespace application.UseCases
             (
                 negocio.Id,
                 negocio.Nome,
-                negocio.Email, 
-                negocio.Documento,
-                negocio.Telefone
+                negocio.Email,
+                negocio.Documento.Valor,
+                negocio.Telefone.Valor
             );
         }
 

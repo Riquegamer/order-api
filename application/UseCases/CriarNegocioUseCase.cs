@@ -9,15 +9,15 @@ namespace application.UseCases
     public class CriarNegocioUseCase : ICriarNegocioUseCase
     {
         #region Propriedades
-        
+
         private readonly INegocioRepository _negocioRepository;
         private readonly IServicoSeguranca _servicoSeguranca;
 
         #endregion
 
         #region Construtores
-        
-        public CriarNegocioUseCase(INegocioRepository negocioRepository, IServicoSeguranca servicoSeguranca    )
+
+        public CriarNegocioUseCase(INegocioRepository negocioRepository, IServicoSeguranca servicoSeguranca)
         {
             _negocioRepository = negocioRepository;
             _servicoSeguranca = servicoSeguranca;
@@ -26,13 +26,21 @@ namespace application.UseCases
         #endregion
 
         #region Metodos
-        
-        public async Task<CreateNegocioResponse> ExecuteAsync(CreateNegocioRequest req)
+
+        public async Task<NegocioResponse> ExecuteAsync(CreateNegocioRequest req)
         {
+            var negocioExistente = _negocioRepository.GetByEmailAsync(req.Email);
+
+            if (negocioExistente != null) 
+            {
+                throw new Exception($"O e-mail {req.Email} já esta sendo ultilizado por outro negocio");
+            }
+
             var senhaCriptografada = _servicoSeguranca.HashSenha(req.Senha);
             var negocio = new NegocioEntity(req.Nome, req.Email, req.Documento, req.Telefone, senhaCriptografada);
             var createdNegocio = await _negocioRepository.CreateAsync(negocio);
-            return new CreateNegocioResponse(createdNegocio.Id, createdNegocio.Nome, createdNegocio.Email, createdNegocio.Documento, createdNegocio.Telefone);
+            return new NegocioResponse(createdNegocio.Id, createdNegocio.Nome, createdNegocio.Email, createdNegocio.Documento.Valor, createdNegocio.Telefone.Valor);
+
         }
 
         #endregion

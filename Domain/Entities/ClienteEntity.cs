@@ -8,10 +8,10 @@ namespace domain.Entities
         #region Propriedades
         public Guid Id { get; private set; }
         
-        public string Documento { get; private set; }
+        public Documento Documento { get; private set; }
         public string Nome { get; private set; }
         public string? NomeFantasia { get; private set; }
-        public string Telefone { get; private set; }
+        public Telefone Telefone { get; private set; }
         public Email Email { get; private set; }
 
         public Guid NegocioId { get; private set; }
@@ -35,9 +35,9 @@ namespace domain.Entities
 
             Id = Guid.NewGuid();
             Nome = nome;
-            Documento = documento;
+            Documento = Documento.Criar(documento);
             NomeFantasia = nomeFantasia;
-            Telefone = telefone;
+            Telefone = Telefone.Criar(telefone);
             Email = email;
             NegocioId = negocioId;
             CriadoEm = DateTime.UtcNow;
@@ -57,9 +57,9 @@ namespace domain.Entities
             if (string.IsNullOrWhiteSpace(telefone)) throw new DomainException("Telefone do cliente é obrigatório.");
             if (string.IsNullOrWhiteSpace(email)) throw new DomainException("E-mail do cliente é obrigatório.");
             Nome = nome;
-            Documento = documento;
+            Documento = Documento.Criar(documento);
             NomeFantasia = nomeFantasia;
-            Telefone = telefone;
+            Telefone = Telefone.Criar(telefone);
             Email = email;
             AtualizadoEm = DateTime.UtcNow;
         }
