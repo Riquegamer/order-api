@@ -21,12 +21,12 @@ namespace application.DTOs.Validations
 
             RuleFor(x => x.Telefone)
                 .NotEmpty().WithMessage("O telefone é obrigatório.")
-                .Length(12, 13).WithMessage("O telefone deve ter entre 12 e 13 caracteres.");
+                .Length(10, 11).WithMessage("O telefone deve ter entre 10 e 11 caracteres.");
 
             RuleFor(x => x.Senha)
                 .NotEmpty().WithMessage("A senha é obrigatória.")
-                .MinimumLength(8).WithMessage("A senha deve ter no mínimo 8 caracteres.");
-                //.Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$").WithMessage("A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.");
+                .MinimumLength(8).WithMessage("A senha deve ter no mínimo 8 caracteres.")
+                .Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$").WithMessage("A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.");
         }
     
 }

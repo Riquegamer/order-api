@@ -67,8 +67,6 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<INegocioRepository, NegocioRepository>();
 builder.Services.AddScoped<ICriarNegocioUseCase,CriarNegocioUseCase>();
-builder.Services.AddScoped<IListarNegociosUseCase, ListarNegociosUseCase>();
-builder.Services.AddScoped<IEncontrarNegocioPorIDUseCase,EncotrarNegocioPorIDUseCase>();
 builder.Services.AddScoped<IAtualizarNegocioUseCase,AtualizarNegocioUseCase>();
 builder.Services.AddScoped<IDeletarNegocioUseCase,DeletarNegocioUseCase>();
 

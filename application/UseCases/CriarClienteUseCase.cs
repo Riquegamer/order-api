@@ -29,7 +29,7 @@ namespace application.UseCases
         {
             var cliente = new ClienteEntity(request.Nome, request.Documento, request.NomeFantasia, request.Telefone, request.Email, request.NegocioId);
             await _clienteRepository.CreateAsync(cliente);
-            return new ClienteResponse(cliente.Id, cliente.Nome, cliente.NomeFantasia, cliente.Documento, cliente.Telefone, cliente.Email, cliente.NegocioId, cliente.CriadoEm, cliente.AtualizadoEm);
+            return new ClienteResponse(cliente.Id, cliente.Nome, cliente.NomeFantasia, cliente.Documento.Valor, cliente.Telefone.Valor, cliente.Email, cliente.NegocioId, cliente.CriadoEm, cliente.AtualizadoEm);
         }
 
         #endregion

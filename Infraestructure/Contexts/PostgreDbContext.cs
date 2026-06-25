@@ -39,10 +39,16 @@ namespace Infraestructure.Contexts
                 {
                     emailBuilder.Property(e => e.Valor).HasColumnName("Email").IsRequired().HasMaxLength(255);
                 });
+                entity.ComplexProperty(e => e.Documento, documentoBuilder =>
+                {
+                    documentoBuilder.Property(d => d.Valor).HasColumnName("Documento").IsRequired().HasMaxLength(14);
+                });
+                entity.ComplexProperty(e => e.Telefone, telefoneBuilder => 
+                {
+                    telefoneBuilder.Property(t => t.Valor).HasColumnName("Telefone").IsRequired().HasMaxLength(11);
+                });
 
                 entity.Property(e => e.Nome).IsRequired().HasMaxLength(150);
-                entity.Property(e => e.Documento).IsRequired().HasMaxLength(20);
-                entity.Property(e => e.Telefone).IsRequired().HasMaxLength(20);
 
                 entity.Property(e => e.DeletadoEm).HasColumnName("DeletadoEm");
                 entity.HasQueryFilter(e => e.DeletadoEm == null);
@@ -54,9 +60,15 @@ namespace Infraestructure.Contexts
                 {
                     emailBuilder.Property(e => e.Valor).HasColumnName("Email").IsRequired().HasMaxLength(255);
                 });
+                entity.ComplexProperty(e => e.Documento, documentoBuilder =>
+                {
+                    documentoBuilder.Property(d => d.Valor).HasColumnName("Documento").IsRequired().HasMaxLength(14);
+                });
+                entity.ComplexProperty(e => e.Telefone, telefoneBuilder =>
+                {
+                    telefoneBuilder.Property(t => t.Valor).HasColumnName("Telefone").IsRequired().HasMaxLength(11);
+                });
                 entity.Property(e => e.Nome).IsRequired().HasMaxLength(150);
-                entity.Property(e => e.Documento).IsRequired().HasMaxLength(20);
-                entity.Property(e => e.Telefone).IsRequired().HasMaxLength(20);
                 entity.Property(e => e.DeletadoEm).HasColumnName("DeletadoEm");
                 entity.HasOne(c => c.Negocio)
                     .WithMany()

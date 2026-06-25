@@ -26,7 +26,7 @@ namespace application.UseCases
         public async Task<IEnumerable<ClienteResponse>> ExecuteAsync()
         {
             var clientes = await _clienteRepository.GetAllAsync();
-            return clientes.Select(c => new ClienteResponse(c.Id, c.Nome, c.NomeFantasia, c.Documento, c.Telefone, c.Email, c.NegocioId, c.CriadoEm, c.AtualizadoEm));
+            return clientes.Select(c => new ClienteResponse(c.Id, c.Nome, c.NomeFantasia, c.Documento.Valor, c.Telefone.Valor, c.Email, c.NegocioId, c.CriadoEm, c.AtualizadoEm));
         }
         
         #endregion

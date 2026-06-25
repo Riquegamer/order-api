@@ -9,8 +9,8 @@ namespace domain.Entities
         public Guid Id { get; private set; }
         public string Nome { get; private set; }
         public Email Email { get; private set; }
-        public string Documento { get; private set; }
-        public string Telefone { get; private set; }
+        public Documento Documento { get; private set; }
+        public Telefone Telefone { get; private set; }
         public DateTime CriadoEm { get; private set; }
         public DateTime AtualizadoEm { get; private set; }
         public DateTime? DeletadoEm { get; private set; }
@@ -32,8 +32,8 @@ namespace domain.Entities
             Id = new Guid();
             Nome = nome;
             Email = new Email(email);
-            Documento = documento;
-            Telefone = telefone;
+            Documento = Documento.Criar(documento);
+            Telefone = Telefone.Criar(telefone);
             SenhaHash = senhaHash;
             CriadoEm = DateTime.UtcNow;
             AtualizadoEm = DateTime.UtcNow;
@@ -52,8 +52,8 @@ namespace domain.Entities
 
             Nome = nome;
             Email = new Email(email);
-            Documento = documento;
-            Telefone = telefone;
+            Documento = Documento.Criar(documento);
+            Telefone = Telefone.Criar(telefone);
             AtualizadoEm = DateTime.UtcNow;
         }
 
@@ -63,7 +63,5 @@ namespace domain.Entities
         }
 
         #endregion
-
-        // TODO: Criar VOs para telefone, email e documento
     }
 }
