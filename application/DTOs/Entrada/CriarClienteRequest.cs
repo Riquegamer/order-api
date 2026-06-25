@@ -1,4 +1,4 @@
 ﻿namespace application.DTOs.Entrada
 {
-    public record CriarClienteRequest(string nome,string? nomeFantasia, string documento, string telefone, string email, Guid negocioId);
+    public record CriarClienteRequest(string Nome,string? NomeFantasia, string Documento, string Telefone, string Email, Guid NegocioId);
 }

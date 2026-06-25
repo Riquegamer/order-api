@@ -7,13 +7,23 @@ namespace application.UseCases
 {
     public class EncontrarClientePorIDUseCase : IEncontrarClientePorIDUseCase
     {
+        #region Propriedades
+        
         private readonly IClienteRepository _clienteRepository;
 
+        #endregion
+        
+        #region Construtores
+        
         public EncontrarClientePorIDUseCase(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
+        #endregion
+        
+        #region Metodos
+        
         public async Task<ClienteResponse?> ExecuteAsync(EncontrarClienteRequest request)
         {
             var cliente = await _clienteRepository.GetByIdAsync(request.Id);
@@ -34,5 +44,7 @@ namespace application.UseCases
                 cliente.AtualizadoEm
             );
         }
+
+        #endregion
     }
 }

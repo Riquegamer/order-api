@@ -6,12 +6,12 @@ namespace Infraestructure.Contexts
 {
     public class PostgreDbContext : DbContext
     {
-        #region Entities 
+        #region Entidades
         public DbSet<NegocioEntity> negocio { get; set; } // TODO: Criar DbSet para cada entidade do domínio
         public DbSet<ClienteEntity> cliente { get; set; }
         #endregion
 
-        #region Constructor
+        #region Construtores
         private readonly RlsInterceptor _rlsInterceptor;
         public PostgreDbContext(DbContextOptions<PostgreDbContext> options, RlsInterceptor rlsInterceptor) : base(options)
         {
@@ -19,7 +19,7 @@ namespace Infraestructure.Contexts
         }
         #endregion
 
-        #region Configuration
+        #region Configuracao
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(_rlsInterceptor);
@@ -27,7 +27,7 @@ namespace Infraestructure.Contexts
         }
         #endregion
 
-        #region Models
+        #region Modelos
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

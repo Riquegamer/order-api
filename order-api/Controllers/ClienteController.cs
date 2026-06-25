@@ -10,7 +10,8 @@ namespace order_api.Controllers
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        #region Fields
+        #region Propriedades
+
         private readonly ICriarClienteUseCase _criarClienteUseCase;
         private readonly IValidator<CriarClienteRequest> _CriarClienteValidator;
         private readonly IListarClientesUseCase _listarClientesUseCase;
@@ -21,7 +22,8 @@ namespace order_api.Controllers
 
         #endregion
 
-        #region Constructor
+        #region Construtores
+
         public ClienteController(ICriarClienteUseCase criarClienteUseCase, IValidator<CriarClienteRequest> criarClienteValidator, IListarClientesUseCase listarClientesUseCase, IEncontrarClientePorIDUseCase encontrarClienteUseCase, IAtualizarClienteUseCase atualizarClienteUseCase, IDeletarClienteUseCase deletarClienteUseCase, IValidator<AtualizarClienteRequest> atualizarClienteValidator)
         {
             _criarClienteUseCase = criarClienteUseCase;
@@ -33,9 +35,11 @@ namespace order_api.Controllers
             _deletarClienteUseCase = deletarClienteUseCase;
 
         }
+
         #endregion
 
         #region Endpoints
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateCliente([FromBody] CriarClienteRequest req)

@@ -3,7 +3,7 @@ using application.DTOs.Saida;
 
 namespace application.Interfaces
 {
-    public interface ICreateNegocioUseCase
+    public interface ICriarNegocioUseCase
     {
         Task<CreateNegocioResponse> ExecuteAsync(CreateNegocioRequest request);
     }

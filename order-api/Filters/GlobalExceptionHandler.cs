@@ -6,6 +6,8 @@ namespace order_api.Infrastructure.Filters
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {
+        #region Metodos
+
         public async ValueTask<bool> TryHandleAsync(
             HttpContext httpContext,
             Exception exception,
@@ -28,5 +30,7 @@ namespace order_api.Infrastructure.Filters
 
             return false;
         }
+
+        #endregion
     }
 }

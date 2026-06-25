@@ -6,6 +6,6 @@ namespace application.Interfaces
 {
     public interface ILoginUseCase
     {
-        Task<LoginResponse?> ExecuteAsync(LoginRequest req);
+        Task<LoginResponse?> ExecuteAsync(LoginRequest request);
     }
 }

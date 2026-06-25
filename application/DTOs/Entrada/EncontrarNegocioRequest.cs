@@ -1,4 +1,4 @@
 ﻿namespace application.DTOs.Entrada
 {
-    public record EncontrarNegocioRequest(Guid id);
+    public record EncontrarNegocioRequest(Guid Id);
 }

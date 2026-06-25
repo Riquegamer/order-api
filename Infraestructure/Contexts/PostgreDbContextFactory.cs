@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.AspNetCore.Http; // Necessário para instanciar o contexto HTTP vazio
+using Microsoft.AspNetCore.Http;
 using Infraestructure.Contexts.Interceptors;
 
 namespace Infraestructure.Contexts
 {
     public class PostgreDbContextFactory : IDesignTimeDbContextFactory<PostgreDbContext>
     {
+        #region Contestos
+        
         public PostgreDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<PostgreDbContext>();
@@ -17,5 +19,7 @@ namespace Infraestructure.Contexts
 
             return new PostgreDbContext(optionsBuilder.Options, interceptor);
         }
+
+        #endregion
     }
 }

@@ -7,13 +7,23 @@ namespace Infraestructure.Contexts.Interceptors
 {
     public class RlsInterceptor : DbConnectionInterceptor
     {
+        #region Propriedades
+        
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+        
+        #endregion
+        
+        #region Construtores
+        
         public RlsInterceptor(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }
-
+        
+        #endregion
+        
+        #region Metodos
+        
         public override async Task ConnectionOpenedAsync(
             DbConnection connection,
             ConnectionEndEventData eventData,
@@ -41,5 +51,7 @@ namespace Infraestructure.Contexts.Interceptors
 
             await base.ConnectionOpenedAsync(connection, eventData, cancellationToken);
         }
+        
+        #endregion
     }
 }

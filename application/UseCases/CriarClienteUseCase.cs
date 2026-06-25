@@ -8,18 +8,30 @@ namespace application.UseCases
 {
     public class CriarClienteUseCase : ICriarClienteUseCase
     {
+        #region Propriedades
+        
         private readonly IClienteRepository _clienteRepository;
 
+        #endregion
+        
+        #region Construtores
+        
         public CriarClienteUseCase(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
+        #endregion
+
+        #region Metodos
+
         public async Task<ClienteResponse> ExecuteAsync(CriarClienteRequest request)
         {
-            var cliente = new ClienteEntity(request.nome, request.documento, request.nomeFantasia, request.telefone, request.email, request.negocioId);
+            var cliente = new ClienteEntity(request.Nome, request.Documento, request.NomeFantasia, request.Telefone, request.Email, request.NegocioId);
             await _clienteRepository.CreateAsync(cliente);
             return new ClienteResponse(cliente.Id, cliente.Nome, cliente.NomeFantasia, cliente.Documento, cliente.Telefone, cliente.Email, cliente.NegocioId, cliente.CriadoEm, cliente.AtualizadoEm);
         }
+
+        #endregion
     }
 }

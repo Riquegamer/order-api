@@ -1,4 +1,4 @@
 ﻿namespace application.DTOs.Entrada
 {
-    public record DeletarNegocioRequest(string senha);
+    public record DeletarNegocioRequest(string Senha);
 }

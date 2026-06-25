@@ -13,6 +13,8 @@ using Infraestructure.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#region JWT-Configuracao
+
 var jwt = builder.Configuration["JwtSettings:Secret"];
 var key = Encoding.ASCII.GetBytes(jwt);
 
@@ -33,26 +35,46 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+#endregion
+
+#region Login
+
 builder.Services.AddScoped<IServicoSeguranca, ServicoSeguranca>();
 builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
 
+#endregion
+
+#region Excessoes
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+#endregion
+
+#region Validadores
 builder.Services.AddValidatorsFromAssemblyContaining<CreateNegocioRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<AtualizarNegocioRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<AtualizarClienteRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CriarClienteRequestValidator>();
+#endregion
+
 builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 
+#region Negocio
+
 builder.Services.AddScoped<INegocioRepository, NegocioRepository>();
-builder.Services.AddScoped<ICreateNegocioUseCase,CreateNegocioUseCase>();
+builder.Services.AddScoped<ICriarNegocioUseCase,CriarNegocioUseCase>();
 builder.Services.AddScoped<IListarNegociosUseCase, ListarNegociosUseCase>();
 builder.Services.AddScoped<IEncontrarNegocioPorIDUseCase,EncotrarNegocioPorIDUseCase>();
 builder.Services.AddScoped<IAtualizarNegocioUseCase,AtualizarNegocioUseCase>();
 builder.Services.AddScoped<IDeletarNegocioUseCase,DeletarNegocioUseCase>();
+
+#endregion
+
+#region Cliente
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ICriarClienteUseCase, CriarClienteUseCase>();
@@ -60,6 +82,8 @@ builder.Services.AddScoped<IListarClientesUseCase, ListarClientesUseCase>();
 builder.Services.AddScoped<IEncontrarClientePorIDUseCase, EncontrarClientePorIDUseCase>();
 builder.Services.AddScoped<IAtualizarClienteUseCase, AtualizarClienteUseCase>();
 builder.Services.AddScoped<IDeletarClienteUseCase, DeletarClienteUseCase>();
+
+#endregion
 
 builder.Services.AddInfrastructureModule(builder.Configuration);
 

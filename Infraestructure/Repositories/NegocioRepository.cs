@@ -7,8 +7,8 @@ namespace Infraestructure.Repositories
 {
     public class NegocioRepository : INegocioRepository
     {
-        #region Constructor
-        
+        #region Construtores
+
         private readonly PostgreDbContext _context;
         public NegocioRepository(PostgreDbContext context)
         {
@@ -17,7 +17,7 @@ namespace Infraestructure.Repositories
 
         #endregion
 
-        #region Methods
+        #region Metodos
 
         public async Task<NegocioEntity> CreateAsync(NegocioEntity negocio)
         {
@@ -26,7 +26,7 @@ namespace Infraestructure.Repositories
             return negocio;
         }
 
-        public async Task<IEnumerable<NegocioEntity>> GetAllAsync() 
+        public async Task<IEnumerable<NegocioEntity>> GetAllAsync()
         {
             return await _context.negocio.ToListAsync();
         }
@@ -43,13 +43,15 @@ namespace Infraestructure.Repositories
 
         public async Task<NegocioEntity> UpdateAsync(NegocioEntity negocio)
         {
-            try{ 
-            var atualizado = _context.negocio.Update(negocio);
-            await _context.SaveChangesAsync();
-            return atualizado.Entity;
+            try
+            {
+                var atualizado = _context.negocio.Update(negocio);
+                await _context.SaveChangesAsync();
+                return atualizado.Entity;
 
-        }catch
-            { 
+            }
+            catch
+            {
                 throw new Exception("Negocio não encontrado para atualização.");
             }
         }

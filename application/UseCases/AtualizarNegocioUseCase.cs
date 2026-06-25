@@ -7,13 +7,23 @@ namespace application.UseCases
 {
     public class AtualizarNegocioUseCase : IAtualizarNegocioUseCase
     {
+        #region Propriedades
+        
         private readonly INegocioRepository _negocioRepository;
+
+        #endregion
+
+        #region Construtores
 
         public AtualizarNegocioUseCase(INegocioRepository negocioRepository)
         {
             _negocioRepository = negocioRepository;
         }
 
+        #endregion
+
+        #region Metodos
+        
         public async Task<NegocioResponse?> ExecuteAsync(Guid id, AtualizarNegocioRequest request)
         {
             var negocio = await _negocioRepository.GetByIdAsync(id);
@@ -31,5 +41,7 @@ namespace application.UseCases
                 negocio.Telefone
             );
         }
+
+        #endregion
     }
 }

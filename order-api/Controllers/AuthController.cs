@@ -8,10 +8,20 @@ namespace order_api.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
+        #region Propriedades
+        
         private readonly ILoginUseCase _loginUseCase;
-
+        
+        #endregion
+        
+        #region Construtores
+        
         public AuthController(ILoginUseCase loginUseCase) => _loginUseCase = loginUseCase;
-
+        
+        #endregion
+        
+        #region Endpoints
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
@@ -19,5 +29,7 @@ namespace order_api.Controllers
             if (token == null) return Unauthorized(new {mensagem = "Credenciais inválidas." });
             return Ok(token);
         }
+        
+        #endregion
     }
 }

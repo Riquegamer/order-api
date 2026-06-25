@@ -7,13 +7,23 @@ namespace application.UseCases
 {
     public class AtualizarClienteUseCase : IAtualizarClienteUseCase
     {
+        #region Propriedades
+        
         private readonly IClienteRepository _clienteRepository;
 
+        #endregion
+
+        #region Contrutores
+        
         public AtualizarClienteUseCase(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
+        #endregion
+
+        #region Metodos
+        
         public async Task<ClienteResponse?> ExecuteAsync(Guid id, AtualizarClienteRequest request)
         {
             var cliente = await _clienteRepository.GetByIdAsync(id);
@@ -35,6 +45,8 @@ namespace application.UseCases
                 cliente.AtualizadoEm
             );
         }
+
+        #endregion
 
     }
 }
