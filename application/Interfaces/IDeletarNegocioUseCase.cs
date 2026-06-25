@@ -4,6 +4,6 @@ namespace application.Interfaces
 {
     public interface IDeletarNegocioUseCase
     {
-        Task<bool> ExecuteAsync(Guid id, DeletarNegocioRequest req);
+        Task<bool> ExecuteAsync(Guid id, DeletarNegocioRequest request);
     }
 }

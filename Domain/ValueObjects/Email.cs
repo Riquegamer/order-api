@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Mail;
-using System.Text;
+﻿using System.Net.Mail;
 
 namespace domain.ValueObjects
 {
     public record Email
     {
+        #region Propriedades
+        
         public string Valor { get; private init; }
+        
+        #endregion
+
+        #region Construtores
+        
         public Email(string valor)
         {
             if (string.IsNullOrEmpty(valor))
@@ -25,7 +29,14 @@ namespace domain.ValueObjects
                 throw new ArgumentException("Email inválido.", nameof(valor));
             }
         }
+        
+        #endregion
+
+        #region Operadores-Implicitos
+
         public static implicit operator string(Email email) => email.Valor;
         public static implicit operator Email(string valor) => new(valor);
+        
+        #endregion
     }
 }

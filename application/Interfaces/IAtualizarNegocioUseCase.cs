@@ -5,6 +5,6 @@ namespace application.Interfaces
 {
     public interface IAtualizarNegocioUseCase
     {
-        Task<NegocioResponse?> ExecuteAsync(Guid id, AtualizarNegocioRequest req);
+        Task<NegocioResponse?> ExecuteAsync(Guid id, AtualizarNegocioRequest request);
     }
 }

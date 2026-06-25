@@ -10,9 +10,9 @@ namespace order_api.Controllers
     [Route("[controller]")]
     public class NegocioController : ControllerBase
     {
-        #region Fields
+        #region Propriedades
 
-        private readonly ICreateNegocioUseCase _createNegocioUseCase;
+        private readonly ICriarNegocioUseCase _createNegocioUseCase;
         private readonly IEncontrarNegocioPorIDUseCase _encontrarNegocioPorIDUseCase;
         private readonly IListarNegociosUseCase _listarNegociosUseCase;
         private readonly IValidator<CreateNegocioRequest> _createNegocioValidator;
@@ -22,8 +22,9 @@ namespace order_api.Controllers
 
         #endregion
 
-        #region Constructor
-        public NegocioController(ICreateNegocioUseCase createNegocioUseCase, IValidator<CreateNegocioRequest> createNegocioValidator, IAtualizarNegocioUseCase updateNegocioUseCase, IValidator<AtualizarNegocioRequest> updateValidator, IEncontrarNegocioPorIDUseCase encontrarNegocioPorIDUseCase, IListarNegociosUseCase listarNegociosUseCase, IDeletarNegocioUseCase deleteNegocioUseCase)
+        #region Construtores
+
+        public NegocioController(ICriarNegocioUseCase createNegocioUseCase, IValidator<CreateNegocioRequest> createNegocioValidator, IAtualizarNegocioUseCase updateNegocioUseCase, IValidator<AtualizarNegocioRequest> updateValidator, IEncontrarNegocioPorIDUseCase encontrarNegocioPorIDUseCase, IListarNegociosUseCase listarNegociosUseCase, IDeletarNegocioUseCase deleteNegocioUseCase)
         {
             _createNegocioUseCase = createNegocioUseCase;
             _createNegocioValidator = createNegocioValidator;
@@ -33,9 +34,11 @@ namespace order_api.Controllers
             _listarNegociosUseCase = listarNegociosUseCase;
             _deleteNegocioUseCase = deleteNegocioUseCase; 
         }
+
         #endregion
 
         #region Endpoints
+
         [HttpPost]
         public async Task<IActionResult> CreateNegocio([FromBody] CreateNegocioRequest req)
         {

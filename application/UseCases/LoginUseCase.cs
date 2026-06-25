@@ -7,15 +7,25 @@ namespace application.UseCases
 {
     public class LoginUseCase : ILoginUseCase
     {
+        #region Propriedades
+        
         private readonly INegocioRepository _negocioRepository;
         private readonly IServicoSeguranca _servicoSeguranca;
-
+        
+        #endregion
+        
+        #region Construtores
+        
         public LoginUseCase (INegocioRepository negocioRepository, IServicoSeguranca servicoSeguranca)
         {
             _negocioRepository = negocioRepository;
             _servicoSeguranca = servicoSeguranca;
         }
-
+        
+        #endregion
+        
+        #region Metodos
+        
         public async Task<LoginResponse?> ExecuteAsync(LoginRequest req)
         {
             var negocio = await _negocioRepository.GetByEmailAsync(req.Email);
@@ -30,5 +40,7 @@ namespace application.UseCases
 
             return new LoginResponse(negocio.Email.Valor, token);
         }
+
+        #endregion
     }
 }

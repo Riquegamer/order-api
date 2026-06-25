@@ -5,12 +5,22 @@ namespace application.UseCases
 {
     public class DeletarClienteUseCase : IDeletarClienteUseCase
     {
+        #region Propriedades
+        
         private readonly IClienteRepository _clienteRepository;
 
+        #endregion
+
+        #region Construtores
+        
         public DeletarClienteUseCase(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
+
+        #endregion
+
+        #region Metodos
 
         public async Task<bool> ExecuteAsync(Guid id)
         {
@@ -22,5 +32,7 @@ namespace application.UseCases
             var deletedCliente = await _clienteRepository.UpdateAsync(cliente);
             return true;
         }
+
+        #endregion
     }
 }
